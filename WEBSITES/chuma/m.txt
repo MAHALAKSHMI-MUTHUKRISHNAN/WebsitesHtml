@@ -1,0 +1,125 @@
+import React from 'react';
+import firebase from './firebase';
+import { Link } from 'react-router-dom';
+
+class BloodAdmin extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+    key: '',
+    O_pos:'',
+    O_neg:'',
+    A_pos:'',
+    A_neg:'',
+    B_neg:'',
+    B_pos:'',
+    AB_pos:'',
+    AB_neg:''
+    };
+  }
+
+  componentDidMount() {
+    const ref = firebase.firestore().collection('bloodavailability').doc(this.props.id);
+    ref.get().then((doc) => {
+      if (doc.exists) {
+        const blood = doc.data();
+        this.setState({
+          key: doc.id,
+        O_pos:blood.O_pos,
+        O_neg:blood.O_neg,
+        A_pos:blood.A_pos,
+        A_neg:blood.A_neg,
+        B_neg:blood.B_pos,
+        B_pos:blood.B_neg,
+        AB_pos:blood.AB_pos,
+        AB_neg:blood.AB_neg
+        });
+      } else {
+        console.log("No such document!");
+      }
+    });
+  }
+
+  onChange = (e) => {
+    const state = this.state
+    state[e.target.name] = e.target.value;
+    this.setState({blood:state});
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const { O_pos,
+        O_neg,
+        A_pos,
+        A_neg,
+        B_neg,
+        B_pos,
+        AB_pos,
+        AB_neg
+         } = this.state;
+
+    const updateRef = firebase.firestore().collection('bloodavailability').doc(this.state.key);
+    updateRef.set({
+        O_pos,
+        O_neg,
+        A_pos,
+        A_neg,
+        B_neg,
+        B_pos,
+        AB_pos,
+        AB_neg
+        
+    }).then((docRef) => {
+      this.setState({
+        key: '',
+        O_pos:'',
+    O_neg:'',
+    A_pos:'',
+    A_neg:'',
+    B_neg:'',
+    B_pos:'',
+    AB_pos:'',
+    AB_neg:''
+      });
+      this.props.history.push("/BloodAvailability/"+this.props.id)
+    })
+    .catch((error) => {
+      console.error("Error adding document: ", error);
+    });
+  }
+
+  render() {
+    return (
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              EDIT BOARD
+            </h3>
+          </div>
+          <div class="panel-body">
+            <h4><Link to={`/show/${this.state.key}`} class="btn btn-primary">Board List</Link></h4>
+            
+            <form>
+                   
+                    <h5>O+</h5>
+                    <input type = "text" class = "form-control" name = "name" value = {this.state.O_pos} onChange={this.onChange} placeholder = "Enter your Name"></input>
+              
+                    
+                   
+                    <button className='login__signInButton' onClick = {this.onSubmit}>Confirm</button>
+                    
+                  
+                        <button type='submit'  className='login__signInButton'>SIGN UP</button>
+                  
+                    </form>   
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default BloodAdmin;

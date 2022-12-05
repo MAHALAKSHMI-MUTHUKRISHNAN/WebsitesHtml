@@ -1,0 +1,69 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+body .services-container{
+display:flex;
+justify-content:center;
+align:self:center;
+min-height:100vh;
+background:#122;
+}
+.service{
+position:relative;
+max-width:100%;
+display:grid;
+grid-template-colums: repeat(auto-fill, minmax(300px,1fr));
+grid-template-rows: minmax(100px,auto);
+margin:40px;
+grid-auto-flow:dens
+}
+.service .box2{
+   background:#333;
+   padding:20px;
+   display:grid;
+   font-size:20px;
+   place-items:center;
+   text-align:center;
+   color:#fff;
+   transition:0.5s;
+}
+.service .box2:hover{
+   background: #e91e63; 
+}
+.service .box2 img{
+   position:relative;
+   width:100%;
+   height:250px;
+   margin-bottom:10px;
+}
+.service .box2:nth-child(1){
+   grid-column: span 2;
+   grid-row: span 1;
+}
+.service .box2:nth-child(2){
+  grid-column: span 1;
+   grid-row: span 2;
+}
+.service .box2:nth-child(4){
+   grid-column: span 2;
+   grid-row: span 1;
+}
+.service .box2:nth-child(5){
+  grid-column: span 1;
+   grid-row: span 2;
+}
+@media (max-width:991px){
+  .service{
+
+grid-template-colums: repeat(auto-fill, minmax(500px,1fr));
+grid-template-rows: minmax(auto,auto);
+
+}
+.service .box2{
+   grid-column: unset !important;
+   grid-row: unset !important;
+}
+}

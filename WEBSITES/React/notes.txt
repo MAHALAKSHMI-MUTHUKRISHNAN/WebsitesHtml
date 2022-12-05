@@ -1,0 +1,1 @@
+https://github.com/facebook/react/issues/13525#:~:text=React%20Fire%20is%20an%20effort,make%20React%20smaller%20and%20faster.

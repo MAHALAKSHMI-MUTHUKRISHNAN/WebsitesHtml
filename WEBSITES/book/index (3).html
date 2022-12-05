@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>CSS Responsive Content</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="contact-in">
+<div class="contact-form1">
+<h1>Contact Us</h1>
+<form>
+<input type="text" class="name1" placeholder="Name" id="contact-form-txt" required/>
+<input type="email" class="email1" placeholder="Email" id="contact-form-txt" required/>
+<input type="tel" pattern="[0-9]{10}" class="number" placeholder="Contact Number" id="contact-form-txt" required/>
+<input type="date" class="date" placeholder="Date" id="contact-form-txt" required/>
+<p class="contact-form-txt2">Ceremony:</p>
+<select class="ceremony" name="ceremony" id="contact-form-txt1">
+  <option value="SELECT">SELECT</option>
+  <option value="EAR PIERCING">EAR PIERCING</option>
+  <option value="NOSE PIERCING">NOSE PIERCING</option>
+  <option value="MAKE ORDERS">MAKE ORDERS</option>
+</select>
+<p id="contact-form-txt2">Please select the location:</p>
+<input type="radio" id="contact-form-txt2" class="store" name="store" value="store">
+<label for="store" id="contact-form-txt3">Store</label>
+<input type="radio" id="contact-form-txt2" name="outside" value="outside">
+<label for="outside" id="contact-form-txt3">Outside Location</label>
+
+
+<textarea class="message1" placeholder="Message" id="contact-form-txtarea"></textarea>
+<button type="submit" id="contact-form-btn">SUBMIT</button>
+</form>
+
+</div>
+</div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./app.js"></script>
+
+
+</body>
+</html>
